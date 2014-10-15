@@ -40,6 +40,16 @@ d = %A_YYYY%-%A_MM%-%A_DD%
 Send %d%
 return
 
+>::/for::
+>InputBox, txt
+>Stringlen, len, txt
+>Send, for(int %txt% = 0{;} %txt% < {;}%txt%{+}{+}){Enter}
+>Send, {{}{}}{Left}{Enter}{Up}{Up}{End}
+>Loop, %len%
+>	Send, {Left}
+>Loop, 5
+>	Send, {Left}
+>return
 ::/for::
 InputBox, txt
 Stringlen, len, txt
