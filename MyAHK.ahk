@@ -23,9 +23,12 @@ SysGet, VirtualScreenHeight, 79
 winmove,A,,0,0,VirtualScreenWidth/2,VirtualScreenHeight 
 return
 
+^!Right::WinMove,A,,A_ScreenWidth/2,0,A_ScreenWidth/2,A_ScreenHeight
+
 ; *****************************************************************************
 ; Run Programs
 ^!n:: Run, Notepad
+^!e:: Run, C:\emacs-24.3\bin\runemacs
 
 
 ; *****************************************************************************
@@ -41,16 +44,13 @@ Send %d%
 return
 
 ::/for::
-InputBox, txt
+InputBox, txt, {What's the Loop Varable}
+InputBOx, times, {Howmany Times To Loop}
 Stringlen, len, txt
 if(len = 0)
 	return
-Send, {f}{o}{r}(int %txt% = 0{;} %txt% <  {;}%txt%{+}{+}){Enter}
-Send, {{}{}}{Left}{Enter}{Up}{Up}{End}
-Loop, %len%
-	Send, {Left}
-Loop, 5
-	Send, {Left}
+SendRaw,for(int %txt% = 0; %txt% < %times%; %txt%++)
+Send, {Enter}{{}{}}{Left}{Enter}
 return
 
 ; *****************************************************************************
