@@ -64,6 +64,10 @@ Sleep,%time%
 MsgBox 水开拉
 return
 
+^!c::
+IfWinActive, ahk_exe notepad++.exe
+Send, !v,s,s,{Enter}
+return
 
 ; Note: From now on whenever you run AutoHotkey directly, this script
 ; will be loaded.  So feel free to customize it to suit your needs.
